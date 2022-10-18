@@ -121,7 +121,7 @@ void* clientCommunication(void* data){
     do {
         //receive data
 
-        size = recv(*current_socket, buf, BUF, 0);
+        size = recv(*current_socket, buf, BUF - 1, 0);
 
         if (size == -1) {
             if (abortRequested) {
@@ -147,7 +147,7 @@ void* clientCommunication(void* data){
 
         //null terminate message & print to stdout
         buf[size] = '\0';
-        fprintf(stdout, "Message received: %s", buf);
+        fprintf(stdout, "Message received: %s\n", buf);
 
         //send confirmation msg
         CHECKNNULL(send(*current_socket, "OK", 3, 0));

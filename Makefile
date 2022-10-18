@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -g -std=c++17
+CFLAGS = -g -std=c++17 -Wall -Werror
 SRCDIR = src
 OBJDIR = obj
 
@@ -33,7 +33,7 @@ kekclient: obj/kekclient.o
 # SERVER
 
 obj/kekserver.o: src/kekserver.c
-	$(CC) $(CFLAGS) -o obj/kekserver.o src/kekclient.c -c
+	$(CC) $(CFLAGS) -o obj/kekserver.o src/kekserver.c -c
 
 kekserver: obj/kekserver.o
 	$(CC) $(CFLAGS) -o bin/kekserver obj/kekserver.o
